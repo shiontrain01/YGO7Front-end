@@ -5,14 +5,13 @@ import { CardCreateComponent } from './Card/Card-create/Card-create.component';
 import { CardEditComponent } from './Card/Card-edit/Card-edit.component';
 import { CardListComponent } from './Card/Card-list/Card-list.component';
 import { HomeComponent } from './home/home.component';
-import { FusionMonsterComponent } from 'C:/yugiohSevensFinal/AirplaneFront-master/app/src/app/components/card-creation/fusion-monster/fusion-monster.component';
-import { LinkMonsterComponent } from 'C:/yugiohSevensFinal/AirplaneFront-master/app/src/app/components/card-creation/link-monster/link-monster.component';
-import { RitualMonsterComponent } from 'C:/yugiohSevensFinal/AirplaneFront-master/app/src/app/components/card-creation/ritual-monster/ritual-monster.component';
+import { FusionMonsterComponent } from 'C:/git/YGO7Front-end/app/src/app/components/card-creation/fusion-monster/fusion-monster.component';
+import { LinkMonsterComponent } from 'C:/git/YGO7Front-end/app/src/app/components/card-creation/link-monster/link-monster.component';
+import { RitualMonsterComponent } from 'C:/git/YGO7Front-end/app/src/app/components/card-creation/ritual-monster/ritual-monster.component';
 import { MonsterCardComponent  } from './components/card-creation/monster-card/monster-card.component';
-import { SynchroMonsterComponent } from 'C:/yugiohSevensFinal/AirplaneFront-master/app/src/app/components/card-creation/synchro-monster/synchro-monster.component';
-import { XyzMonsterComponent } from 'C:/yugiohSevensFinal/AirplaneFront-master/app/src/app/components/card-creation/xyz-monster/xyz-monster.component';
-import { PendulumMonsterComponent } from 'C:/yugiohSevensFinal/AirplaneFront-master/app/src/app/components/card-creation/pendulum-monster/pendulum-monster.component';
-
+import { SynchroMonsterComponent } from 'C:/git/YGO7Front-end/app/src/app/components/card-creation/synchro-monster/synchro-monster.component';
+import { XyzMonsterComponent } from 'C:/git/YGO7Front-end/app/src/app/components/card-creation/xyz-monster/xyz-monster.component';
+import { PendulumMonsterComponent } from 'C:/git/YGO7Front-end/app/src/app/components/card-creation/pendulum-monster/pendulum-monster.component';
 
 const routes: Routes = [
   { path: 'Card/create', component: CardCreateComponent },

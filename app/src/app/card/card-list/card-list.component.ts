@@ -4,7 +4,7 @@ import { FormControl,FormGroup , Validators} from '@angular/forms';
 import { ApiService } from '../../services/api.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { MonsterCardComponent } from "C:/yugiohSevensFinal/AirplaneFront-master/app/src/app/components/card-creation/monster-card/monster-card.component"
+import { MonsterCardComponent } from "C:/git/YGO7Front-end/app/src/app/components/card-creation/monster-card/monster-card.component"
 import { Card } from 'src/app/models/card';
 
 /**

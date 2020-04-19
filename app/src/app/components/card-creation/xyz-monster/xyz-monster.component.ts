@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Card } from 'c:/yugiohSevensFinal/AirplaneFront-master/app/src/app/models/card';
-import { ApiService } from 'c:/yugiohSevensFinal/AirplaneFront-master/app/src/app/services/api.service';
+import { Card } from 'C:/git/YGO7Front-end/app/src/app/models/card';
+import { ApiService } from 'C:/git/YGO7Front-end/app/src/app/services/api.service';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
@@ -31,7 +31,7 @@ export class XyzMonsterComponent implements OnInit {
     this.card = new Card();
   }
 
-  
+
     ngOnInit() {
         this.CardForm = new FormGroup({
           'XyzSummonRequirement': new FormControl(this.card.XyzSummonRequirement, [
@@ -57,6 +57,6 @@ export class XyzMonsterComponent implements OnInit {
           ]
           )
         });
-    
+
       }
 }
