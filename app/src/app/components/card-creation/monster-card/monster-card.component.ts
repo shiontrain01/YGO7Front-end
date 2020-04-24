@@ -1,9 +1,14 @@
-import { Component, OnInit,Input,EventEmitter,Output } from '@angular/core';
-import { Card } from 'C:/git/YGO7Front-end/app/src/app/models/card';
+
+import { Component , ViewChild, AfterViewInit,OnInit , CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+import { FormControl,FormGroup , Validators} from '@angular/forms';
+import{ Card } from 'C:/git/YGO7Front-end/app/src/app/models/card';
 import { ApiService } from 'C:/git/YGO7Front-end/app/src/app/services/api.service';
 import { Router } from '@angular/router';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { PendulumMonsterComponent } from 'C:/git/YGO7Front-end/app/src/app/components/card-creation/pendulum-monster/pendulum-monster.component';
+import { MonsterAffiliationEnum } from 'C:/git/YGO7Front-end/app/src/app/models/monsterAffiliationEnum';
+import { MonsterSecondTypeEnum } from 'C:/git/YGO7Front-end/app/src/app/models/monsterSecondTypeEnum';
+import { MonsterSummonMethodEnum } from 'C:/git/YGO7Front-end/app/src/app/models//monsterSummonMethodEnum';
 
 
 /**
@@ -20,10 +25,23 @@ import { ToastrService } from 'ngx-toastr';
 
 
  /* implements OnInit*/
-export class MonsterCardComponent {
+export class MonsterCardComponent implements OnInit,AfterViewInit{
     id: number;
     card: Card;
     CardForm: FormGroup;
+    value : any;
+    balue: any;
+    myVar: any;
+    keys = Object.keys;
+    monsterAffiliationEnum=MonsterAffiliationEnum;
+    monsterSecondTypeEnum=MonsterSecondTypeEnum;
+    monsterSummonMethodEnum=MonsterSummonMethodEnum;
+
+
+    //monsterAffiliationEnumOptions = [];
+    //monsterSecondTypeEnumOptions = [];
+    //cardElementEnumOptions = [];
+    monsterinfo: {};
     monster: {
       CardAttack:number,
       CardDefense:number,
@@ -33,24 +51,45 @@ export class MonsterCardComponent {
       Stars:number,
       TunerMonster:boolean,
       MonsterSecondarySpecialization:[],
-
+      pen: 3;
+      rit: 4;
     };
 
+    @ViewChild(PendulumMonsterComponent) childMonster;
 
-    @Output() formEvent = new EventEmitter<any>();
-
-//constructor(
-//  public apiService: ApiService,
-//  public router: Router,
-//  private toastr: ToastrService
-//) {
-//  this.card = new Card();
-//}
-
-    senndFields(){
-      this.formEvent.emit(this.monster)
+    recieveMonster($event){
+      this.monsterinfo = event;
     }
 
+    constructor(
+      public apiService: ApiService,
+      public router: Router,
+      private toastr: ToastrService,
+    ) {
+      this.card = new Card();
+    }
+
+    ngOnInit(){
+   //  this.monsterAffiliationEnumOptions = Object.keys(this.monsterAffiliationEnum);
+   //  this.monsterSecondTypeEnumOptions = Object.keys(this.monsterSecondTypeEnum);
+    }
+
+
+
+
+      ngAfterViewInit(){
+    this.monsterinfo = this.childMonster.monster;
+  }
+}
+
+
+
+
+
+ //   senndFields(){
+ //     this.formEvent.emit(this.monster)
+ //   }
+//
 /*
     ngOnInit() {
     //  this.MonsterTypeEnum = this.apiService.getData()
@@ -126,4 +165,4 @@ export class MonsterCardComponent {
 
   }
 */
-}
+

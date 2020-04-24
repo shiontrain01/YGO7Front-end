@@ -1,5 +1,3 @@
-
-
 <div>
   <mat-button-toggle-group #colorToggle="matButtonToggleGroup" value="primary" aria-label="Change color">
     <mat-button-toggle value="primary"> Primary </mat-button-toggle>
@@ -17,19 +15,38 @@
 </div>
 
 
+            <mat-card>
+              <mat-card-header>
+                <mat-card-title>title</mat-card-title>
+                <mat-card-subtitle>subtitle</mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+              hduashduasudhusau
+              <img src="C:/Users/NATHANPC/Pictures/Nova pasta/499265873396105226.png" >
+
+              </mat-card-content>
+              <mat-card-actions>
+                <button mat-button>Ok</button>
+              </mat-card-actions>
+            </mat-card>
 <div class="container">
 
   <h1>Template-Driven Form</h1>
   <form #CardForm="ngForm" appIdentityRevealed>
     <div [hidden]="CardForm.submitted">
 
-      <div class="form-group">
+
+
+
+
+
+
+
+      <!-- <div class="form-group">
         <label for="CardId">Code</label>
         <input id="CardId" name="CardId" class="form-control"
               required minlength="1"
               [(ngModel)]="card.CardId" #codigo="ngModel" >
-
-
         </div>
 
 
@@ -38,19 +55,12 @@
         <input id="CardName" name="CardName" class="form-control"
               required minlength="1"
               [(ngModel)]="card.CardName" #CardName="ngModel" >
-
-
-
-
       </div>
-
       <div class="form-group">
         <label for="Stars">Number of passengers</label>
         <input id="Stars" name="Stars" class="form-control"
               required minlength="1" maxlength="4" ngModel pattern="[0-9]*"
               [(ngModel)]="card.Stars" #Stars="ngModel" >
-
-
       </div>
 
 
@@ -61,25 +71,26 @@
 
 
   </form>
-</div>
+</div> -->
 
 
-<!--
-<mat-tab-group [color]="colorToggle.value" [backgroundColor]="backgroundColorToggle.value">
-  <mat-tab label="First">
-    <mat-card>
-      <div class="col-md-3" aria-colspan="3">
-        <span style="color:red;" *ngIf="message">{{message}}</span>
-        <input #file type="file" accept='image/*' (change)="preview(file.files)" />
-        <img [src]="imgURL" height="200" *ngIf="imgURL">
-    </div>
 
 
-              <fieldset>
+      <mat-tab-group [color]="colorToggle.value" [backgroundColor]="backgroundColorToggle.value">
+        <mat-tab label="First">
+          <mat-card>
+            <div class="col-md-3" aria-colspan="3">
+              <span style="color:red;" *ngIf="message">{{message}}</span>
+              <input #file type="file" accept='image/*' (change)="preview(file.files)" />
+              <img [src]="imgURL" height="200" *ngIf="imgURL">
+            </div>
 
-                <form action="/action_page.php">
-                  <div class="input-group row">
-                    <div  class="col-md-4">
+            <mat-card>
+            <fieldset>
+
+              <form action="/action_page.php">
+                <div class="input-group row">
+                  <!-- <div  class="col-md-4">
                       <label for="2">Type</label>
                       <mat-select [formControl]="animalControl" required >
                         <mat-option> -- </mat-option>
@@ -88,42 +99,49 @@
                         </mat-option>
                       </mat-select>
                       <mat-error *ngIf="animalControl.hasError('required')">Choose The Card Type</mat-error>
+                    </div> -->
+
+                    <div class="col-md-3">
+                      <label class="label-head">Card Type</label>
+                      <select MatSelect name="phd_guide" class="form-control" required [(ngModel)]="myVar">
+                        <option value="">Choase The Card Type</option>
+                        <option value="Monster">Monster</option>
+                        <option value="Spell">Spell</option>
+                        <option value="Trap">Trap</option>
+                      </select>
                     </div>
                     <div class="col-md-4">
-                      <label for="1">Card Name</label>
-                      <input type="text" class="form-control" placeholder="Username" id="1" name="username2">
+                      <label for="cardname">Card Name</label>
+                      <input matInput type="text" class="form-control" required placeholder="Card Name" id="cardname" name="CardName">
                     </div>
-                    <div  class="col-md-4">
-                      <label for="2">Card ID</label>
-                      <input type="text" class="form-control" placeholder="Username" id="2" name="username2">
+                    <div class="col-md-4">
+                      <label for="cardId">Card ID</label>
+                      <input matInput type="text" class="form-control" required placeholder="The Card ID sequence" id="cardId" name="CardId">
                     </div>
-               </div>
-            <br>
-                  <div>
-                    <app-monster-card (formEvent) = "recieveMonster($event)">
+                    </div>
+                    <div class="cold-md-12">
+                      <div *ngIf="myVar === 'Monster'" class="col-md-12" style="padding:5px" id="general-1">
+                        <app-monster-card>
 
-                    </app-monster-card>
+                        </app-monster-card>
+                      </div>
+
+                  <div class="cold-md-12" *ngIf="myVar === 'Spell'  " class="col-md-12" style="padding:5px" id="general-2">
+                    <p>lala</p>
+
                   </div>
 
-                  <div class="input-group row">
-              <div  class="col-md-6">
-                <div  class="col-md-6  pull-right">
-                <label for="2">ATTACK</label>
-                <input type="number" class="form-control" placeholder="ATK" id="2" name="username2">
-                </div>
-              </div>
-              <div  class="col-md-6">
-                <div  class="col-md-6">
-                <label for="2">DEFENSE</label>
-                <input type="number" class="form-control" placeholder="DEF" id="2" name="username2">
-                </div>
-              </div>
+                  <div class="cold-md-12" *ngIf="myVar === 'Trap' " class="col-md-12" style="padding:5px" id="general-2">
+                    <p>laladadsa</p>
 
-            </div>
+                  </div>
 
-              <br>
-            <div class="input-group row">
-              <div  class="col-md-2">
+                  <div>
+
+                  </div>
+                </div>
+                <div class="input-group row">
+                  <!-- <div  class="col-md-2">
                 <label for="2">Element</label>
                 <mat-select [formControl]="animalControl" required >
                   <mat-option> -- </mat-option>
@@ -132,8 +150,8 @@
                   </mat-option>
                 </mat-select>
                 <mat-error *ngIf="animalControl.hasError('required')">Choose A monster Type</mat-error>
-              </div>
-              <div  class="col-md-3">
+              </div> -->
+                  <!-- <div  class="col-md-3">
                <label for="monsterType">Monster Primary Type</label>
                 <mat-select [formControl]="animalControl" required >
                   <mat-option> -- </mat-option>
@@ -142,34 +160,19 @@
                   </mat-option>
                 </mat-select>
                 <mat-error *ngIf="animalControl.hasError('required')">Choose A monster Type</mat-error>
-                <mat-hint>{{animalControl.value?.sound}}</mat-hint>
+                <mat-hint>{{animalControl.value?.sound}}</mat-hint> -->
 
-              </div>
-              <div  class="col-md-1">
-                <label for="2">Stars</label>
-                <input type="text" class="form-control" placeholder="Username" id="2" name="username2">
-              </div>
+                  <!-- </div> -->
 
 
-            </div>
-            <div class="input-group row">
-              <div  class="col-md-7">
-                <label for="2">Card Text</label>
-                <mat-form-field class="example-full-width">
-                  <mat-label>Card Effect and/or Flavor Text</mat-label>
-                  <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
-                </mat-form-field>
-              </div>
-              <div class="col-md-5"><label for="">Card Secondary Type
-                <ejs-multiselect id='localData' #local [dataSource]='countries' [fields]='localFields' [placeholder]='localWaterMark'></ejs-multiselect>
-              </label></div>
+                </div>
 
-          </div>
-          <app-monster-card></app-monster-card>
 
-            <button type="submit" class="btn btn-primary pull-right">Submit</button>
-          </form>
-        </fieldset>
-      </mat-card>
-  </mat-tab>
-</mat-tab-group> -->
+                <button type="submit" class="btn btn-primary pull-right">Submit</button>
+              </form>
+            </fieldset>
+          </mat-card>
+        </mat-card>
+
+        </mat-tab>
+      </mat-tab-group>

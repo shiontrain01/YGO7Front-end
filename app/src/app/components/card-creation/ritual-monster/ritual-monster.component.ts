@@ -12,7 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
-  selector: 'table-basic-example',
+  selector: 'app-ritual-monster',
   templateUrl: './ritual-monster.component.html',
   styleUrls: ['./ritual-monster.component.scss']
 })

@@ -1,0 +1,82 @@
+<mat-card>
+  <div class="input-group row">
+    <div class="col-md-2">
+      <div class="col-md-12">
+      <label for="ATK">ATTACK</label>
+      <input matInput type="text" class="form-control" placeholder="ATK" id="ATK" name="username2">
+      </div>
+      <div class="col-md-12">
+      <label for="DEF">DEFENSE</label>
+      <input matInput type="text" class="form-control" placeholder="DEF" id="DEF" name="username2">
+    </div>
+      <div class="col-md-12">
+      <label for="Stars">Stars</label>
+      <input matInput type="text" class="form-control" placeholder="✰ ✰ ✰" id="Stars">
+    </div>
+    </div>
+    <div class="col-md-3" style="align-self: center;">
+      <div class="col-md-12">
+        <label class="label-head" for="Affiliation">Monster Affiliation</label>
+                <select name="Affiliation" MatSelect required class="form-control" >
+                  <option> -- </option>
+                  <option  *ngFor="let symbol of keys(monsterAffiliationEnum)" [ngValue]="monsterAffiliationEnum[symbol]">
+                    {{symbol}}
+                  </option>
+                </select>
+      </div>
+      <div class="col-md-12">
+        <label class="label-head">Summoning Method</label>
+        <select MatSelect name="Summoning" class="form-control" required >
+          <option> -- </option>
+          <option  *ngFor="let symbol of keys(monsterSummonMethodEnum)" [ngValue]="monsterSummonMethodEnum[symbol]">
+            {{symbol}}
+        </select>
+      </div>
+       <!-- <div  class="col-md-2">
+                <label for="2">Element</label>
+                <mat-select [formControl]="animalControl" required >
+                  <mat-option> -- </mat-option>
+                  <mat-option *ngFor="let animal of animals" [value]="animal">
+                    {{animal.name}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="animalControl.hasError('required')">Choose A monster Type</mat-error>
+              </div> -->
+    </div>
+    <div class="col-md-3" style="align-self: center;">
+      <div class="col-md-12"><label for="">Card Secondary Type</label>
+        <ejs-multiselect id='localData' #local [dataSource]='' [fields]='' [placeholder]=''></ejs-multiselect>
+      </div>
+    </div>
+    <div class="col-md-4" style="align-self: center;">
+      <mat-card style="text-align: center;">
+        <label for="2">Click in the button which types the monster has</label>
+        <div class="example-button-row">
+          <button mat-stroked-button color="primary" (click)="value =!value" style="width: 80px;">Pendulum</button>
+          <button mat-stroked-button color="primary" (click)="value = 2" style="width: 80px;">Ritual</button>
+        </div>
+        <div [ngSwitch]="value">
+          <div *ngSwitchCase="1 ">
+            <app-pendulum-monster (formEvent)="recieveMonster($event)"></app-pendulum-monster>
+          </div>
+          <div *ngSwitchCase="2">
+            <app-ritual-monster style="display: flex; justify-content:center; align-items:center;" ></app-ritual-monster>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+    <div class="col-12 text-center">
+      <mat-form-field class="example-full-width">
+        <mat-label>Card Effect and/or Flavor Text</mat-label>
+        <textarea style="width: 500px;" matInput
+        cdkTextareaAutosize
+        cdkAutosizeMinRows="3"
+        cdkAutosizeMaxRows="10" placeholder="Monster EFFECT AND/OR Lore"></textarea>
+      </mat-form-field>
+    </div>
+  </div>
+</mat-card>
+
+<mat-card>
+  <app-link-monster></app-link-monster>
+</mat-card>

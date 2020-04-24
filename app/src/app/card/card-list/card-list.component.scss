@@ -9,7 +9,7 @@ mat-card{
 }
 
 mat-select {
-   
+
   color: black;
   border-bottom : 2px solid #666666;
 
@@ -23,4 +23,13 @@ mat-select {
 
 .example-full-width {
   width: 100%;
+}
+
+.mat-select-arrow {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid;
+  margin: 0 4px;
 }

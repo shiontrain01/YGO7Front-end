@@ -4,44 +4,55 @@ import { FormControl,FormGroup , Validators} from '@angular/forms';
 import { ApiService } from '../../services/api.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { MonsterCardComponent } from "C:/git/YGO7Front-end/app/src/app/components/card-creation/monster-card/monster-card.component"
+//import { MonsterCardComponent } from "C:/git/YGO7Front-end/app/src/app/components/card-creation/monster-card/monster-card.component"
 import { Card } from 'src/app/models/card';
 
 /**
  * @title Basic use of `<table mat-table>`
  */
 
-interface Animal {
-  name: string;
-  sound: string;
-
-}
-
 @Component({
   selector: 'table-basic-example',
   templateUrl: './Card-list.component.html',
   styleUrls: ['./Card-list.component.scss']
 })
-export class CardListComponent implements OnInit,AfterViewInit{
+export class CardListComponent implements OnInit{
+
+  myVar='';
 
   card:Card;
   id: number;
   monsterinfo: {};
   CardForm: FormGroup;
-
+  keys: any;
+  surahSelect: any[];
+  //cardselected: number;
+  cardselected: any = {};
+  modifedtext: string;
 
   constructor(
     public apiService: ApiService,
     public router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
   ) {
     this.card = new Card();
   }
 
 
+  // onchangevar(myVar){
+  //   console.log(myVar,"k1");
+  //   if(myVar.optitions.value == 1){
+  //     myVar = 'yes';
+  //     console.log(myVar,"k2");
+  //     return myVar;
+  //   }
+  //   console.log(myVar,"k3");
+  //   return '';
+  // }
 
 
-  @ViewChild(MonsterCardComponent) childMonster;
+
+ // @ViewChild(MonsterCardComponent) childMonster;
 
   recieveMonster($event){
     this.monsterinfo = event;
@@ -50,6 +61,7 @@ export class CardListComponent implements OnInit,AfterViewInit{
 
   ngOnInit(){
   this.CardForm = new FormGroup({
+
       'CardId': new FormControl(this.card.CardId, [
         Validators.required,
         Validators.minLength(1),
@@ -67,34 +79,16 @@ export class CardListComponent implements OnInit,AfterViewInit{
         Validators.maxLength(4)
       ]
       )
+
     });
   }
 
-  ngAfterViewInit(){
-    this.monsterinfo = this.childMonster.monster;
-  }
+ // ngAfterViewInit(){
+ //   this.monsterinfo = this.childMonster.monster;
+ // }
   ///
 
 
-   ///
-
-  // get cardId() { return this.cardForm.get('cardId'); }
-//
-  // get nome() { return this.cardForm.get('nome'); }
-//
-  // get elementType() { return this.cardForm.get('elementType'); }
-//
-//
-  //  ///
-//
-  animalControl = new FormControl('', Validators.required);
-  selectFormControl = new FormControl('', Validators.required);
-  animals: Animal[] = [
-    {name: 'Monster', sound: 'Woof!'},
-    {name: 'Light', sound: 'Meow!'},
-    {name: 'Spellcaster', sound: 'Dark Mage goes DOOM'},
-    {name: 'Fox', sound: 'Wa-pa-pa-pa-pa-pa-pow!'},
-  ];
   //////
    // define the JSON of data
    public countries: { [key: string]: Object; }[] = [

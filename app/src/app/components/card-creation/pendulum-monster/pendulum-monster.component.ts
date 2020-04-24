@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { Card } from 'C:/git/YGO7Front-end/app/src/app/models/card';
+import { Component , ViewChild, AfterViewInit,OnInit,Output,EventEmitter } from "@angular/core";
+import { FormControl,FormGroup , Validators} from '@angular/forms';
+import{ Card } from 'C:/git/YGO7Front-end/app/src/app/models/card';
 import { ApiService } from 'C:/git/YGO7Front-end/app/src/app/services/api.service';
 import { Router } from '@angular/router';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-
 /**
  * @title Basic use of `<table mat-table>`
  */
@@ -12,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
-  selector: 'table-basic-example',
+  selector: 'app-pendulum-monster',
   templateUrl: './pendulum-monster.component.html',
   styleUrls: ['./pendulum-monster.component.scss']
 })
@@ -21,6 +20,19 @@ export class PendulumMonsterComponent implements OnInit {
     id: number;
     card: Card;
     CardForm: FormGroup;
+    monster: {
+      CardAttack:number,
+      CardDefense:number,
+      MonsterType:number,
+      MonsterCardClass:number,
+      MonsterSecondaryEffect:number,
+      Stars:number,
+      TunerMonster:boolean,
+      MonsterSecondarySpecialization:[],
+      pen: 3;
+      rit: 4;
+    };
+
 
   constructor(
     public apiService: ApiService,
@@ -29,6 +41,15 @@ export class PendulumMonsterComponent implements OnInit {
   ) {
     this.card = new Card();
   }
+
+  @Output() formEvent = new EventEmitter<any>();
+
+
+
+    senndFields(){
+      this.formEvent.emit(this.monster)
+    }
+
 
 
     ngOnInit() {
