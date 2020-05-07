@@ -1,6 +1,6 @@
 <mat-card>
   <div class="input-group row">
-    <div class="col-md-2">
+    <div class="col-md-2" style="align-self: center;">
       <div class="col-md-12">
       <label for="ATK">ATTACK</label>
       <input matInput type="text" class="form-control" placeholder="ATK" id="ATK" name="username2">
@@ -9,43 +9,42 @@
       <label for="DEF">DEFENSE</label>
       <input matInput type="text" class="form-control" placeholder="DEF" id="DEF" name="username2">
     </div>
-      <div class="col-md-12">
-      <label for="Stars">Stars</label>
-      <input matInput type="text" class="form-control" placeholder="✰ ✰ ✰" id="Stars">
-    </div>
     </div>
     <div class="col-md-3" style="align-self: center;">
       <div class="col-md-12">
+        <label for="Stars">Stars</label>
+        <input matInput type="text" class="form-control" id="Stars">
+      </div>
+      <div class="col-md-12">
         <label class="label-head" for="Affiliation">Monster Affiliation</label>
-                <select name="Affiliation" MatSelect required class="form-control" >
+                <select name="Affiliation" MatSelect required class="form-control"  >
                   <option> -- </option>
-                  <option  *ngFor="let symbol of keys(monsterAffiliationEnum)" [ngValue]="monsterAffiliationEnum[symbol]">
+                  <option  *ngFor="let symbol of keys(monsterAffiliationEnum)" [ngValue]="monsterAffiliationEnum[symbol]" >
                     {{symbol}}
                   </option>
                 </select>
       </div>
       <div class="col-md-12">
         <label class="label-head">Summoning Method</label>
-        <select MatSelect name="Summoning" class="form-control" required >
-          <option> -- </option>
+        <select MatSelect name="Summoning" class="form-control" required [(ngModel)]="summonMethod">
           <option  *ngFor="let symbol of keys(monsterSummonMethodEnum)" [ngValue]="monsterSummonMethodEnum[symbol]">
             {{symbol}}
         </select>
       </div>
-       <!-- <div  class="col-md-2">
-                <label for="2">Element</label>
-                <mat-select [formControl]="animalControl" required >
-                  <mat-option> -- </mat-option>
-                  <mat-option *ngFor="let animal of animals" [value]="animal">
-                    {{animal.name}}
-                  </mat-option>
-                </mat-select>
-                <mat-error *ngIf="animalControl.hasError('required')">Choose A monster Type</mat-error>
-              </div> -->
     </div>
-    <div class="col-md-3" style="align-self: center;">
-      <div class="col-md-12"><label for="">Card Secondary Type</label>
-        <ejs-multiselect id='localData' #local [dataSource]='' [fields]='' [placeholder]=''></ejs-multiselect>
+    <div class="col-md-3" style="align-self: center;padding-bottom: 20px;">
+      <div class="col-md-12 text-center" style="padding-bottom: 20px;">
+        <label for="MonsterStyle"> Monster </label>
+      <mat-button-toggle-group name="MonsterStyle" aria-label="Font Style">
+        <mat-button-toggle value="Normal">Normal</mat-button-toggle>
+        <mat-button-toggle value="Effect">Effect</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+      <div class="col-md-12 text-center"><label for="">Card Secondary Type</label>
+         
+          <ejs-multiselect id='monsterSecond' [dataSource]='keys(monsterSecondTypeEnum)'></ejs-multiselect>
+         
+    
       </div>
     </div>
     <div class="col-md-4" style="align-self: center;">
@@ -57,7 +56,7 @@
         </div>
         <div [ngSwitch]="value">
           <div *ngSwitchCase="1 ">
-            <app-pendulum-monster (formEvent)="recieveMonster($event)"></app-pendulum-monster>
+            <app-pendulum-monster></app-pendulum-monster>
           </div>
           <div *ngSwitchCase="2">
             <app-ritual-monster style="display: flex; justify-content:center; align-items:center;" ></app-ritual-monster>
@@ -65,18 +64,32 @@
         </div>
       </mat-card>
     </div>
-    <div class="col-12 text-center">
-      <mat-form-field class="example-full-width">
-        <mat-label>Card Effect and/or Flavor Text</mat-label>
-        <textarea style="width: 500px;" matInput
-        cdkTextareaAutosize
-        cdkAutosizeMinRows="3"
-        cdkAutosizeMaxRows="10" placeholder="Monster EFFECT AND/OR Lore"></textarea>
-      </mat-form-field>
-    </div>
   </div>
+  <div class="col-12 text-center" style="padding-bottom: 20px;">
+    <label>Card Effect and/or Flavor Text</label>
+    <textarea  class="form-control" cdkTextareaAutosize cdkAutosizeMinRows="3" cdkAutosizeMaxRows="10"
+    placeholder="Ritual Monster Requirement Needed In Order To Summon"></textarea>
+</div>
+
+  <div class="col-12 text-center" *ngIf="summonMethod === monsterSummonMethodEnum.Link ">
+    <app-link-monster></app-link-monster>
+  </div>
+  
+  <div class="col-12 text-center" *ngIf="summonMethod === monsterSummonMethodEnum.Fusion ">
+    <app-fusion-monster> </app-fusion-monster>
+  </div>
+
+  <div class="col-12 text-center" *ngIf="summonMethod === monsterSummonMethodEnum.Synchro ">
+    <app-synchro-monster> </app-synchro-monster>
+  </div>
+
+  <div class="col-12 text-center" *ngIf="summonMethod === monsterSummonMethodEnum.Xyz ">
+    <app-xyz-monster> </app-xyz-monster>
+  </div>
+  
+ 
+
+
 </mat-card>
 
-<mat-card>
-  <app-link-monster></app-link-monster>
-</mat-card>
+

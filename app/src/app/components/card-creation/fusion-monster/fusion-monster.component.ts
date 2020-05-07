@@ -12,12 +12,33 @@ import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
-  selector: 'table-basic-example',
+  selector: 'app-fusion-monster',
   templateUrl: './fusion-monster.component.html',
   styleUrls: ['./fusion-monster.component.scss']
 })
 
 export class FusionMonsterComponent implements OnInit {
+
+  public addresses: any[] = [{
+    address: '',
+    street: '',
+    city: '',
+    country: ''
+  }];
+
+  addAddress() {
+    this.addresses.push({
+      id: this.addresses.length + 1,
+      address: '',
+      street: '',
+      city: '',
+      country: ''
+    });
+  }
+
+  removeAddress(i: number) {
+    this.addresses.splice(i, 1);
+  }
 
     id: number;
     card: Card;

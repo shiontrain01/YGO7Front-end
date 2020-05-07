@@ -1,0 +1,29 @@
+<mat-card>
+    <div class="text-center">
+      <button type="button" class="btn btn-primary mb-2" (click)="addAddress()">Add Card Material For Fusion</button>
+    </div>
+    <section class="container  col-6" *ngFor="let address of addresses; let i = index;">
+      <div class="row">
+        <div class="col-6">
+            <h4>Card {{i + 1}}</h4>
+        </div>
+        <div class="col-6 text-right">
+            <button type="button" class="btn btn-danger btn-sm" (click)="removeAddress(i)">Remove</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+            <div class="form-group">
+                <label>Amount Needed</label>
+                <input type="text" class="form-control" [(ngModel)]="address.address" name="address_{{address.id}}"/>
+              </div>
+        </div>
+        <div class="col-8">
+            <div class="form-group">
+                <label>Fusion Material Name</label>
+                <input type="text" class="form-control" [(ngModel)]="address.street" name="street_{{address.id}}"/>
+              </div>
+        </div>
+      </div>
+    </section>
+  </mat-card>

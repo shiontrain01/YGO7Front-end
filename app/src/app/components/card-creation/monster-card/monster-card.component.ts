@@ -25,7 +25,7 @@ import { MonsterSummonMethodEnum } from 'C:/git/YGO7Front-end/app/src/app/models
 
 
  /* implements OnInit*/
-export class MonsterCardComponent implements OnInit,AfterViewInit{
+export class MonsterCardComponent implements OnInit{
     id: number;
     card: Card;
     CardForm: FormGroup;
@@ -36,11 +36,7 @@ export class MonsterCardComponent implements OnInit,AfterViewInit{
     monsterAffiliationEnum=MonsterAffiliationEnum;
     monsterSecondTypeEnum=MonsterSecondTypeEnum;
     monsterSummonMethodEnum=MonsterSummonMethodEnum;
-
-
-    //monsterAffiliationEnumOptions = [];
-    //monsterSecondTypeEnumOptions = [];
-    //cardElementEnumOptions = [];
+    summonMethod= '';
     monsterinfo: {};
     monster: {
       CardAttack:number,
@@ -55,11 +51,16 @@ export class MonsterCardComponent implements OnInit,AfterViewInit{
       rit: 4;
     };
 
-    @ViewChild(PendulumMonsterComponent) childMonster;
+
 
     recieveMonster($event){
       this.monsterinfo = event;
     }
+
+ 
+
+
+
 
     constructor(
       public apiService: ApiService,
@@ -70,16 +71,24 @@ export class MonsterCardComponent implements OnInit,AfterViewInit{
     }
 
     ngOnInit(){
+      console.log(this.summonMethod);
+      console.log(this.monsterSummonMethodEnum);
+      console.log(this.monsterSummonMethodEnum.Fusion);
+      console.log(this.monsterSecondTypeEnum);
+
+
+      
+
+      
    //  this.monsterAffiliationEnumOptions = Object.keys(this.monsterAffiliationEnum);
    //  this.monsterSecondTypeEnumOptions = Object.keys(this.monsterSecondTypeEnum);
     }
 
 
 
+  
 
-      ngAfterViewInit(){
-    this.monsterinfo = this.childMonster.monster;
-  }
+
 }
 
 

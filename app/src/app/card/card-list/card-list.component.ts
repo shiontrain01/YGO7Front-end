@@ -11,12 +11,34 @@ import { Card } from 'src/app/models/card';
  * @title Basic use of `<table mat-table>`
  */
 
+ 
 @Component({
   selector: 'table-basic-example',
   templateUrl: './Card-list.component.html',
   styleUrls: ['./Card-list.component.scss']
 })
 export class CardListComponent implements OnInit{
+
+  public addresses: any[] = [{
+    address: '',
+    street: '',
+    city: '',
+    country: ''
+  }];
+
+  addAddress() {
+    this.addresses.push({
+      id: this.addresses.length + 1,
+      address: '',
+      street: '',
+      city: '',
+      country: ''
+    });
+  }
+
+  removeAddress(i: number) {
+    this.addresses.splice(i, 1);
+  }
 
   myVar='';
 

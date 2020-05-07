@@ -12,12 +12,34 @@ import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
-  selector: 'table-basic-example',
+  selector: 'app-synchro-monster',
   templateUrl: './synchro-monster.component.html',
   styleUrls: ['./synchro-monster.component.scss']
 })
 
 export class SynchroMonsterComponent implements OnInit {
+
+  public addresses: any[] = [{
+    address: '',
+    street: '',
+    city: '',
+    country: ''
+  }];
+
+  addAddress() {
+    this.addresses.push({
+      id: this.addresses.length + 1,
+      address: '',
+      street: '',
+      city: '',
+      country: ''
+    });
+  }
+
+  removeAddress(i: number) {
+    this.addresses.splice(i, 1);
+  }
+
 
     id: number;
     card: Card;
